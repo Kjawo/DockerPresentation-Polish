@@ -1,0 +1,70 @@
+\documentclass[aspectratio=169]{beamer}
+\usepackage[utf8]{inputenc}
+\usepackage{multicol}
+
+\usepackage{polski}
+\usepackage{graphicx}
+
+\usepackage[T1]{fontenc}
+
+\title{Konteneryzacja z użyciem \textbf{Docker}'a \\Izolacja środowisk}
+\date{\today}
+\author[Jaworski]{Konrad Jaworski\\216782@edu.p.lodz.pl}
+
+\usetheme{material}
+
+\useDarkTheme
+\usePrimaryBlue
+\useAccentGreen
+
+\begin{document}
+
+\begin{frame}
+    \titlepage
+\end{frame}
+
+\begin{frame}{Spis treści}
+    \begin{card}
+        \tableofcontents
+    \end{card}
+\end{frame}
+
+\section{Wporwadzenie}
+\begin{frame}{Czym jest docker?}\subsection{Czym jest docker?}
+
+    \centering
+    \includegraphics[scale=0.2]{img/logo.png}
+    \bigskip
+
+    \begin{card}
+        Docker jest otwartoźródłowym oprogramowaniem, które służy do wirtualizacji na poziomie systemu operacyjnego.\\\\
+        Dostarcza pakiety z oprogramowaniem - \textbf{kontenery}.
+    \end{card}
+\end{frame}
+
+
+
+
+\subsection{Czym są kontenery?}
+\begin{frame}{Czym są kontenery?}
+    \begin{card}
+        Setup is really easy:
+        {\color{primary}\textbackslash usetheme\{material\}}
+    \end{card}
+    \begin{card}
+        Further you might want to customize the background with: \\[2mm]
+        {\color{primary}\textbackslash useLightTheme} or {\color{primary}\textbackslash useDarkTheme} \\[2mm]
+        and primary and accent colors.
+    \end{card}
+\end{frame}
+
+\subsection{Kontenery, a maszyny wirtualne}
+\begin{frame}{Kontenery, a maszyny wirtualne}
+    \begin{card}
+        Containers and virtual machines have similar resource isolation and allocation benefits, 
+        but function differently because containers virtualize the operating system instead of hardware. 
+        Containers are more portable and efficient.
+    \end{card}
+\end{frame}
+
+\end{document}
