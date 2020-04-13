@@ -48,16 +48,44 @@
 \subsection{Czym są kontenery?}
 \begin{frame}{Czym są kontenery?}
     \begin{card}
-        Setup is really easy:
-        {\color{primary}\textbackslash usetheme\{material\}}
+        \textbf{Kontener} (\textit{ang.} container) to jednostka oprogramowania opakowywująca kod i wszystkie jego zależności w taki sposób, aby aplikacje działały szybko, niezawodnie i \textbf{jednakowo} niezależnie od środowisk w jakim znajduje się kontener. 
     \end{card}
+
     \begin{card}
-        Further you might want to customize the background with: \\[2mm]
-        {\color{primary}\textbackslash useLightTheme} or {\color{primary}\textbackslash useDarkTheme} \\[2mm]
-        and primary and accent colors.
+        \textbf{Obraz Kontenera} (\textit{ang.} container image) jest lekkim, samodzielnym i wykonywalnym pakietem oprogramowania, które zawiera wszystko co jest potrzebne do uruchomienia aplikacji: kod, 
+        środowisko uruchomieniowe (runtime), narzędzia systemowe, biblioteki i ustawienia.
     \end{card}
 \end{frame}
 
+\begin{frame}
+    \begin{card}
+        Container images become containers at runtime and in the case of Docker containers - images become containers when they run on Docker Engine. Available for both Linux and Windows-based applications, containerized software will always run the same, regardless of the infrastructure. Containers isolate software from its environment and ensure that it works uniformly despite differences for instance between development and staging.
+    \end{card}
+    \begin{card}
+        Obraz kontenera staje się kontenerem 
+    \end{card}
+\end{frame}
+
+\begin{frame}
+    
+    \begin{card}
+        Docker containers that run on Docker Engine:
+        \begin{itemize}
+            \item Standard: Docker created the industry standard for containers, so they could be portable anywhere
+            \item Lightweight: Containers share the machine’s OS system kernel and therefore do not require an OS per application, driving higher server efficiencies and reducing server and licensing costs
+            \item Secure: Applications are safer in containers and Docker provides the strongest default isolation capabilities in the industry
+        \end{itemize}
+    \end{card}
+\end{frame}
+
+    \begin{card}
+        Docker containers that run on Docker Engine:
+        \begin{itemize}
+            \item Standard: Docker created the industry standard for containers, so they could be portable anywhere
+            \item Lightweight: Containers share the machine’s OS system kernel and therefore do not require an OS per application, driving higher server efficiencies and reducing server and licensing costs
+            \item Secure: Applications are safer in containers and Docker provides the strongest default isolation capabilities in the industry
+        \end{itemize}
+    \end{card}
 \subsection{Kontenery, a maszyny wirtualne}
 \begin{frame}{Kontenery, a maszyny wirtualne}
     \begin{card}
