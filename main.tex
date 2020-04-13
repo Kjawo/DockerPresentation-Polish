@@ -154,6 +154,7 @@
     \end{card}
 \end{frame}
 
+\section{Przykład uruchomienia kontenera}
 \begin{frame}{Przykład uruchomienia kontenera}
     \begin{cardTiny}
         Przykładowo możemy uruchomić \colorbox{dark-gray}{\lstinline{ubuntu}} w kontenerze oraz interaktywnie połączyć się z jego powłoką: \colorbox{dark-gray}{\lstinline{\$ docker run -i -t ubuntu /bin/bash}}
@@ -182,6 +183,17 @@
 
 \begin{frameImg}[\textwidth]{img/engine-components-flow.png}
 \end{frameImg}
+
+\section{Przykład użycia na Politechnice Łódzkiej}
+\begin{frame}
+    \begin{card}
+        Podstawy przetwarzania dużych zbiorów danych
+    \end{card}
+
+    \begin{cardTiny}
+        \colorbox{dark-gray}{\lstinline[breaklines=true]{docker run --hostname=quickstart.cloudera \ --mount type=bind,source="/home/kjawo/cloudera",target=/mnt/shared \ --privileged=true -t -i -p 8888:8888 -p 7180:7180 \ cloudera/quickstart /usr/bin/docker-quickstart}}
+    \end{cardTiny}
+\end{frame}
 
 \section{Podsumowanie}
 \begin{frame}{Podsumowanie}
