@@ -176,7 +176,7 @@
 \begin{frame}{Usługi (Docker Services)}
     \begin{card}
         Usługi (Services) pozwalają na skalowanie kontenerów z wykorzystaniem wielu współpracujących serwerów/\textit{daemon'ów} docker'a.
-        Takie rozwiązanie nazywamy \textbf{\textit{Docker Swarm}} i składa się ono z \textit{managerów} i robotników (\textit{workers}). 
+        Takie rozwiązanie nazywamy \textbf{\textit{Docker Swarm}} i składa się ono z \textit{managerów} i robotników (\textit{workers}).
         Każdy członek roju (ang. \textit{swarm}) jest \textit{daemonem} dockera i komunikuje się z innymi członkami za pomocą API.
     \end{card}
 \end{frame}
@@ -189,17 +189,17 @@
 \begin{frame}{Przykład użycia na Politechnice Łódzkiej}
     \begin{cardTiny}
         \centering
-        Nazwa kursu: Podstawy przetwarzania dużych zbiorów danych
+        Nazwa kursu: Podstawy przetwarzania dużych zbiorów danych\\
         Informatyka, FTIMS, VI Semestr
     \end{cardTiny}
 
-\begin{cardTiny}
-    \colorbox{dark-gray}{\lstinline{docker run --hostname=quickstart.cloudera}}\\
-    \colorbox{dark-gray}{\lstinline{--mount type=bind,source="/home/user/cloudera",target=/mnt/shared}}\\
-    \colorbox{dark-gray}{\lstinline{--privileged=true -t -i -p 8888:8888 -p 7180:7180}}\\
-    \colorbox{dark-gray}{\lstinline{cloudera/quickstart /usr/bin/docker-quickstart}}
+    \begin{cardTiny}
+        \colorbox{dark-gray}{\lstinline{docker run --hostname=quickstart.cloudera}}\\
+        \colorbox{dark-gray}{\lstinline{--mount type=bind,source="/home/user/cloudera",target=/mnt/shared}}\\
+        \colorbox{dark-gray}{\lstinline{--privileged=true -t -i -p 8888:8888 -p 7180:7180}}\\
+        \colorbox{dark-gray}{\lstinline{cloudera/quickstart /usr/bin/docker-quickstart}}
 
-\end{cardTiny}
+    \end{cardTiny}
 \end{frame}
 
 \section{Podsumowanie}
@@ -215,14 +215,22 @@
 \end{frame}
 
 
+\begin{frame}{Bibliografia}
+    \begin{card}
+        \begin{itemize}
+            \item \url{https://www.docker.com/why-docker}
+            \item \url{https://www.docker.com/resources/what-container}
+            \item \url{https://www.docker.com/products/container-runtime}
+            \item \url{https://docs.docker.com/get-started/overview/#docker-architecture}
+            \item \url{https://docs.docker.com/engine/}
+            \item \url{https://docs.cloudera.com/documentation/enterprise/5-14-x/topics/quickstart_docker_container.html}
 
-https://www.docker.com/why-docker
-https://www.docker.com/resources/what-container
-https://www.docker.com/products/container-runtime
-% https://docs.docker.com/get-started/overview/#docker-architecture
-https://docs.docker.com/engine/
-https://docs.cloudera.com/documentation/enterprise/5-14-x/topics/quickstart_docker_container.html
+        \end{itemize}
+    \end{card}
 
+\end{frame}
 
+\begin{frameImg}{img/meme_pl.png}
+\end{frameImg}
 \end{document}
 
