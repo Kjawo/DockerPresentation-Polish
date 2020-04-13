@@ -70,6 +70,7 @@
     \end{multicols}
 \end{frame}
 
+\subsection{Docker Engine i jego komponenty}
 \begin{frame}{Docker Engine}
 
     \begin{card}
@@ -114,44 +115,92 @@
     \end{card}
 \end{frame}
 
-\begin{frame}{Obrazy (\textit{images})}
+\subsection{Obiekty docker'a}
+\begin{frame}{Obrazy docker'a (\textit{Docker images})}
     \begin{card}
         Obraz (\textit{image}) jest wzorcem (tylko do odczytu) zawieracjącym instrukcje potrzebne do stworzenia kontenera docker'a.
-        Często obrazy są bazowane na innych, ale zawierają pewne zmiany - na przykład możemy zbudować obraz bazujący na obrazie \colorbox{dark-gray}{\lstinline{ubuntu}}, ale możemy na nim zainstalować Web Server Apache oraz go skonfigurować zgodnie z naszymi potrzebami.
+        Często obrazy są bazowane na innych, ale zawierają pewne zmiany - na przykład możemy zbudować obraz bazujący na obrazie \colorbox{dark-gray}{\lstinline{ubuntu}},
+        ale możemy na nim zainstalować dodatkowo Web Server Apache oraz skonfigurować go zgodnie z naszymi potrzebami.
     \end{card}
-    \begin{card}
-        Możemy korzystać z obrazów stworzonych przez innych, ale możemy również tworzyć własne obrazy, a następnie publikować je w rejestrach. Aby stworzyć własny obraz, należy stworzyć \textbf{Dockerfile} - instrukcje z prostą składnią, definiujące kroki potrzebne do stworzenia obrazu. Gdy zmodyfikujemy \textit{Dockerfile} a następnie ponownie zbudujemy obraz, zmienią się jedynie te warstwy, które zmodyfikowaliśmy.
-    \end{card}
+    \begin{cardTiny}
+        Możemy korzystać z obrazów stworzonych przez innych, ale możemy również tworzyć własne obrazy, a następnie publikować je w rejestrach.
+        Aby stworzyć własny obraz, należy stworzyć \textbf{Dockerfile} - instrukcje z prostą składnią, definiujące kroki potrzebne do stworzenia
+        obrazu. Gdy zmodyfikujemy \textit{Dockerfile}, a następnie ponownie zbudujemy obraz, zmienią się jedynie te warstwy, które zmodyfikowaliśmy.
+    \end{cardTiny}
 
 \end{frame}
+
+\begin{frame}{Kontenery docker'a (\textit{Docker containers})}
+    \begin{card}
+        Kontener docker'a to wykonywalna instancja obrazu. \\
+        Za pomocą API docker'a możemy wykonywać m.in. następujące operacje:
+        \begin{itemize}
+            \item tworzyć kontenery - \colorbox{dark-gray}{\lstinline{docker container create}}
+            \item uruchamiać kontenery - \colorbox{dark-gray}{\lstinline{docker container start}}
+            \item zatrzymywać kontenery - \colorbox{dark-gray}{\lstinline{docker container stop}}
+            \item przenosić kontenery - \colorbox{dark-gray}{\lstinline{docker container move}}
+            \item usuwać kontenery - \colorbox{dark-gray}{\lstinline{docker container delete}}
+        \end{itemize}
+    \end{card}
+    \begin{cardTiny}
+        Kontener możemy połączyć z jedną lub więcej sieci, podłączyć przestrzeń dyskową, a nawet tworzyć nowe obrazy na jego podstawie.
+    \end{cardTiny}
+\end{frame}
+
+\begin{frame}
+    \begin{card}
+        Już domyślnie kontenery są stosunkowo dobrze wyizolowane między sobą oraz między maszyną hosta.\\\\
+        Można natomiast dalej kontrolować w jakim stopniu izolujemy sieć, przestrzeń oraz inne podsystemy naszego kontenera.
+    \end{card}
+\end{frame}
+
+\begin{frame}{Przykład uruchomienia kontenera}
+    \begin{cardTiny}
+        Przykładowo możemy uruchomić \colorbox{dark-gray}{\lstinline{ubuntu}} w kontenerze oraz interaktywnie połączyć się z jego powłoką: \colorbox{dark-gray}{\lstinline{\$ docker run -i -t ubuntu /bin/bash}}
+    \end{cardTiny}
+
+    \begin{cardTiny}
+        Gdy wykonamy powyższe polecenie, następuje:
+        \begin{itemize}
+            \item Jeżeli obraz ubuntu nie zostanie znaleziony lokalnie, zostanie on pobrany z rejestru (domyślnie z Docker Hub)
+            \item Docker tworzy nowy kontener
+            \item Docker alokuje system plików (read-write) do kontenera - pozwala to na tworzenie/modyfikowanie plików z lokalnej przestrzeni hosta
+            \item Docker tworzy interfejs sieciowy łączący kontener z domyślną siecią - m.in. przypisuje mu adres IP. Domyślnie kontener może łączyć się z internetem poprzez sieć hosta
+            \item Docker uruchamia kontener i wywołuje \colorbox{dark-gray}{\lstinline{/bin/bash}} w kontenerze
+        \end{itemize}
+    \end{cardTiny}
+\end{frame}
+
+\begin{frame}{Usługi (Docker Services)}
+    \begin{card}
+        Usługi (Services) pozwalają na skalowanie kontenerów z wykorzystaniem wielu współpracujących serwerów/\textit{daemon'ów} docker'a.
+        Takie rozwiązanie nazywamy \textbf{\textit{Docker Swarm}} i składa się ono z \textit{managerów} i robotników (\textit{workers}). 
+        Każdy członek roju (ang. \textit{swarm}) jest \textit{daemonem} dockera i komunikuje się z innymi członkami za pomocą API.
+    \end{card}
+\end{frame}
+
 
 \begin{frameImg}[\textwidth]{img/engine-components-flow.png}
 \end{frameImg}
 
-\begin{frame}
+\section{Podsumowanie}
+\begin{frame}{Podsumowanie}
     \begin{card}
-        Docker containers that run on Docker Engine:
+        Kontenery docker'a uruchamiane w Docker Engine są:
         \begin{itemize}
-            \item Standard: Docker created the industry standard for containers, so they could be portable anywhere
-            \item Lightweight: Containers share the machine’s OS system kernel and therefore do not require an OS per application, driving higher server efficiencies and reducing server and licensing costs
-            \item Secure: Applications are safer in containers and Docker provides the strongest default isolation capabilities in the industry
+            \item Jednakowe: docker stworzył standard, dzięki któremu aplikacje będą działały tak samo niezależnie od środowiska
+            \item Lekkie: kontenery dzielą kernel maszyny hosta, więc nie potrzebują swojego systemu operacyjnego, redukując używane zasoby
+            \item Bezpieczne: docker dostarcza największą możliwą izolację pomiędzy kontenerami i hostem
         \end{itemize}
     \end{card}
 \end{frame}
 
-\subsection{Kontenery, a maszyny wirtualne}
-\begin{frame}{Kontenery, a maszyny wirtualne}
-    \begin{card}
-        Containers and virtual machines have similar resource isolation and allocation benefits,
-        but function differently because containers virtualize the operating system instead of hardware.
-        Containers are more portable and efficient.
-    \end{card}
-\end{frame}
+
 
 https://www.docker.com/why-docker
 https://www.docker.com/resources/what-container
 https://www.docker.com/products/container-runtime
-https://docs.docker.com/get-started/overview/#docker-architecture
+% https://docs.docker.com/get-started/overview/#docker-architecture
 https://docs.docker.com/engine/
 
 
