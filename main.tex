@@ -85,6 +85,46 @@
 \begin{frameImg}[50mm]{img/architecture.png}
 \end{frameImg}
 
+
+\begin{frame}{Server - docker \textit{daemon}}
+    \begin{card}
+        Usługa servera docker'a (\colorbox{dark-gray}{\lstinline{dockerd}}) słucha zapytań API i na ich podstawie zarządza \textbf{obiektami docker'a} - obrazami (images), kontenerami(containers), sieciami (networks) oraz woluminami (volumes).\\\\
+        Usługa ta potrafi również komunikować się z innymi usługami docker'a (np. w celu zarządzania docker swarm).
+    \end{card}
+\end{frame}
+
+\begin{frame}{Klient docker'a}
+    \begin{card}
+        Klient docker'a (polecenie \colorbox{dark-gray}{\lstinline{docker}}) jest głównym sposobem interakcji użytkownika z resztą oprogramowania docker'a.
+    \end{card}
+    \begin{card}
+        Gdy wywołamy polecenie \colorbox{dark-gray}{\lstinline{docker run}}, klient wysyła instrukcje za pomocą API do usługi  \colorbox{dark-gray}{\lstinline{dockerd}}, która następnie je wykonuje. Klient docker'a może komunikować się z więcej niż jednym serverem.
+
+    \end{card}
+\end{frame}
+
+\begin{frame}{Rejestry docker'a - Docker Hub}
+    \begin{card}
+        Rejestry docker'a służą do przechowywania obrazów. Najbardziej popularnym oraz publicznie dostępnym jest \textit{Docker Hub} (\url{https://hub.docker.com/}).
+        Docker jest domyślnie skonfigurowany w taki sposób, żeby w pierwszym miejscu szukać obrazów właśnie w tym rejestrze. Możliwe jest jednak tworzenie własnych.
+    \end{card}
+    \begin{card}
+        Gdy wywołamy polecenie \colorbox{dark-gray}{\lstinline{docker pull}}, wymagane obrazy są pobierane ze skonfigurowanego rejestru.\\
+        Natomiast gdy użyjemy \colorbox{dark-gray}{\lstinline{docker push}}, nasz obraz zostaje wypchnięty do skonfigurowanego rejestru.
+    \end{card}
+\end{frame}
+
+\begin{frame}{Obrazy (\textit{images})}
+    \begin{card}
+        Obraz (\textit{image}) jest wzorcem (tylko do odczytu) zawieracjącym instrukcje potrzebne do stworzenia kontenera docker'a.
+        Często obrazy są bazowane na innych, ale zawierają pewne zmiany - na przykład możemy zbudować obraz bazujący na obrazie \colorbox{dark-gray}{\lstinline{ubuntu}}, ale możemy na nim zainstalować Web Server Apache oraz go skonfigurować zgodnie z naszymi potrzebami.
+    \end{card}
+    \begin{card}
+        Możemy korzystać z obrazów stworzonych przez innych, ale możemy również tworzyć własne obrazy, a następnie publikować je w rejestrach. Aby stworzyć własny obraz, należy stworzyć \textbf{Dockerfile} - instrukcje z prostą składnią, definiujące kroki potrzebne do stworzenia obrazu. Gdy zmodyfikujemy \textit{Dockerfile} a następnie ponownie zbudujemy obraz, zmienią się jedynie te warstwy, które zmodyfikowaliśmy.
+    \end{card}
+
+\end{frame}
+
 \begin{frameImg}[\textwidth]{img/engine-components-flow.png}
 \end{frameImg}
 
