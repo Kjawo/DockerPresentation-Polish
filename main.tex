@@ -4,8 +4,11 @@
 
 \usepackage{polski}
 \usepackage{graphicx}
+\usepackage{listings}
 
 \usepackage[T1]{fontenc}
+
+\definecolor{dark-gray}{gray}{0.05}
 
 \title{Konteneryzacja z użyciem \textbf{Docker}'a \\Izolacja środowisk}
 \date{\today}
@@ -38,7 +41,7 @@
 
     \begin{card}
         Docker jest otwartoźródłowym oprogramowaniem, które służy do wirtualizacji na poziomie systemu operacyjnego.\\\\
-        Dostarcza pakiety z oprogramowaniem - \textbf{kontenery}.
+        Dostarcza pakiety z oprogramowaniem uruchamiane w wyizolowanym środowisku - \textbf{kontenerze}.
     \end{card}
 \end{frame}
 
@@ -48,26 +51,44 @@
 \subsection{Czym są kontenery?}
 \begin{frame}{Czym są kontenery?}
     \begin{card}
-        \textbf{Kontener} (\textit{ang.} container) to jednostka oprogramowania opakowywująca kod i wszystkie jego zależności w taki sposób, aby aplikacje działały szybko, niezawodnie i \textbf{jednakowo} niezależnie od środowisk w jakim znajduje się kontener. 
+        \textbf{Kontener} (\textit{ang.} container) to jednostka oprogramowania opakowywująca kod i wszystkie jego zależności w taki sposób, aby aplikacje działały szybko, niezawodnie i \textbf{jednakowo} niezależnie od środowisk w jakim znajduje się kontener.
     \end{card}
 
     \begin{card}
-        \textbf{Obraz Kontenera} (\textit{ang.} container image) jest lekkim, samodzielnym i wykonywalnym pakietem oprogramowania, które zawiera wszystko co jest potrzebne do uruchomienia aplikacji: kod, 
+        \textbf{Obraz Kontenera} (\textit{ang.} container image) jest lekkim, samodzielnym i wykonywalnym pakietem oprogramowania, które zawiera wszystko co jest potrzebne do uruchomienia aplikacji: kod,
         środowisko uruchomieniowe (runtime), narzędzia systemowe, biblioteki i ustawienia.
     \end{card}
 \end{frame}
 
 \begin{frame}
+    \begin{multicols}{2}
+        \cardImg{img/what-is-container.png}{0.7\textwidth}
+        \vspace*{47mm}
+        \begin{card}
+            Obraz kontenera staje się kontenerem w momencie uruchomienia obrazu w \textbf{Docker Engine}.
+        \end{card}
+    \end{multicols}
+\end{frame}
+
+\begin{frame}{Docker Engine}
+
     \begin{card}
-        Container images become containers at runtime and in the case of Docker containers - images become containers when they run on Docker Engine. Available for both Linux and Windows-based applications, containerized software will always run the same, regardless of the infrastructure. Containers isolate software from its environment and ensure that it works uniformly despite differences for instance between development and staging.
-    \end{card}
-    \begin{card}
-        Obraz kontenera staje się kontenerem 
+        Docker Engine to aplikacja client-server, której główne komponenty to:
+        \begin{itemize}
+            \item Server, który działa jako usługa (\textit{daemon}) - \colorbox{dark-gray}{\lstinline{dockerd}}
+            \item REST API, który służy aplikacjom do porozumiewania się z \textit{daemon'em}
+            \item Interfejs użytkownika (\textit{ang. CLI - command line interface}) - klient \colorbox{dark-gray}{\lstinline{docker}}
+        \end{itemize}
     \end{card}
 \end{frame}
+
+\begin{frameImg}[50mm]{img/architecture.png}
+\end{frameImg}
+
+\begin{frameImg}[\textwidth]{img/engine-components-flow.png}
+\end{frameImg}
 
 \begin{frame}
-    
     \begin{card}
         Docker containers that run on Docker Engine:
         \begin{itemize}
@@ -78,21 +99,20 @@
     \end{card}
 \end{frame}
 
-    \begin{card}
-        Docker containers that run on Docker Engine:
-        \begin{itemize}
-            \item Standard: Docker created the industry standard for containers, so they could be portable anywhere
-            \item Lightweight: Containers share the machine’s OS system kernel and therefore do not require an OS per application, driving higher server efficiencies and reducing server and licensing costs
-            \item Secure: Applications are safer in containers and Docker provides the strongest default isolation capabilities in the industry
-        \end{itemize}
-    \end{card}
 \subsection{Kontenery, a maszyny wirtualne}
 \begin{frame}{Kontenery, a maszyny wirtualne}
     \begin{card}
-        Containers and virtual machines have similar resource isolation and allocation benefits, 
-        but function differently because containers virtualize the operating system instead of hardware. 
+        Containers and virtual machines have similar resource isolation and allocation benefits,
+        but function differently because containers virtualize the operating system instead of hardware.
         Containers are more portable and efficient.
     \end{card}
 \end{frame}
+
+https://www.docker.com/why-docker
+https://www.docker.com/resources/what-container
+https://www.docker.com/products/container-runtime
+https://docs.docker.com/get-started/overview/#docker-architecture
+https://docs.docker.com/engine/
+
 
 \end{document}
