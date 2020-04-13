@@ -4,6 +4,7 @@
 
 \usepackage{polski}
 \usepackage{graphicx}
+\usepackage{xcolor}
 \usepackage{listings}
 
 \usepackage[T1]{fontenc}
@@ -185,14 +186,20 @@
 \end{frameImg}
 
 \section{Przykład użycia na Politechnice Łódzkiej}
-\begin{frame}
-    \begin{card}
-        Podstawy przetwarzania dużych zbiorów danych
-    \end{card}
-
+\begin{frame}{Przykład użycia na Politechnice Łódzkiej}
     \begin{cardTiny}
-        \colorbox{dark-gray}{\lstinline[breaklines=true]{docker run --hostname=quickstart.cloudera \ --mount type=bind,source="/home/kjawo/cloudera",target=/mnt/shared \ --privileged=true -t -i -p 8888:8888 -p 7180:7180 \ cloudera/quickstart /usr/bin/docker-quickstart}}
+        \centering
+        Nazwa kursu: Podstawy przetwarzania dużych zbiorów danych
+        Informatyka, FTIMS, VI Semestr
     \end{cardTiny}
+
+\begin{cardTiny}
+    \colorbox{dark-gray}{\lstinline{docker run --hostname=quickstart.cloudera}}\\
+    \colorbox{dark-gray}{\lstinline{--mount type=bind,source="/home/user/cloudera",target=/mnt/shared}}\\
+    \colorbox{dark-gray}{\lstinline{--privileged=true -t -i -p 8888:8888 -p 7180:7180}}\\
+    \colorbox{dark-gray}{\lstinline{cloudera/quickstart /usr/bin/docker-quickstart}}
+
+\end{cardTiny}
 \end{frame}
 
 \section{Podsumowanie}
@@ -214,6 +221,8 @@ https://www.docker.com/resources/what-container
 https://www.docker.com/products/container-runtime
 % https://docs.docker.com/get-started/overview/#docker-architecture
 https://docs.docker.com/engine/
+https://docs.cloudera.com/documentation/enterprise/5-14-x/topics/quickstart_docker_container.html
 
 
 \end{document}
+
