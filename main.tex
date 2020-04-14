@@ -229,15 +229,20 @@
 
 \begin{frame}{Kolejny przykład}
     \begin{cardTiny}
-        Docker pozwala niemal natychmiastowo uruchamiać całe środowiska developerskie
+        Docker pozwala niemal natychmiastowo uruchamiać całe środowiska developerskie. 
+        Weźmy na przykład projekt \textit{code-server} (\url{https://github.com/cdr/code-server}) - wystarczyło jedno polecenie:\\
+        \colorbox{dark-gray}{\lstinline{docker run -it -p 127.0.0.1:8080:8080 -v}}\\
+        \colorbox{dark-gray}{\lstinline{"$PWD:/home/coder/project" codercom/code-server}}
     \end{cardTiny}
 
     \begin{cardTiny}
-        % \colorbox{dark-gray}{\lstinline{docker run -it -p 127.0.0.1:8080:8080 -v \}}\\
-        % \colorbox{dark-gray}{\lstinline{"$PWD:/home/coder/project" codercom/code-server }}
+        W ten sposób dzięki konteneryzacji w ciągu kilku minut, ustawiłem na moim serwerze środowisko developerskie w postaci  \colorbox{dark-gray}{Visual Studio Code}, które jest dostępne z przeglądarki internetowej z każdego miejsca na Ziemi!
     \end{cardTiny}
     
 \end{frame}
+
+\begin{frameImg}{img/code-server.png}
+\end{frameImg}
 
 \section{Podsumowanie}
 \begin{frame}{Podsumowanie}
