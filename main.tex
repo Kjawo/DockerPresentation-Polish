@@ -27,7 +27,7 @@
     \titlepage
 \end{frame}
 
-\begin{frame}{Spis treści}
+\begin{frame}{Table of contents}
     \begin{card}
         \tableofcontents
     \end{card}
@@ -148,6 +148,9 @@
     \end{cardTiny}
 \end{frame}
 
+\begin{frameImg}[\textwidth]{img/engine-components-flow.png}
+\end{frameImg}
+
 \begin{frame}
     \begin{card}
         Już domyślnie kontenery są stosunkowo dobrze wyizolowane między sobą oraz między maszyną hosta.\\\\
@@ -155,8 +158,19 @@
     \end{card}
 \end{frame}
 
-\section{Przykład uruchomienia kontenera}
-\begin{frame}{Przykład uruchomienia kontenera}
+\begin{frame}{Usługi (Docker Services)}
+    \begin{card}
+        Usługi (Services) pozwalają na skalowanie kontenerów z wykorzystaniem wielu współpracujących serwerów/\textit{daemon'ów} docker'a.
+        Takie rozwiązanie nazywamy \textbf{\textit{Docker Swarm}} i składa się ono z \textit{managerów} i robotników (\textit{workers}).
+        Każdy członek roju (ang. \textit{swarm}) jest \textit{daemonem} dockera i komunikuje się z innymi członkami za pomocą API.
+    \end{card}
+\end{frame}
+
+\begin{frameImg}[\textwidth]{img/swarm-diagram.png}
+\end{frameImg}
+
+\section{Własne doświadczenia}
+\begin{frame}{Własne doświadczenia}
     \begin{cardTiny}
         Przykładowo możemy uruchomić \colorbox{dark-gray}{\lstinline{ubuntu}} w kontenerze oraz interaktywnie połączyć się z jego powłoką: \colorbox{dark-gray}{\lstinline{\$ docker run -i -t ubuntu /bin/bash}}
     \end{cardTiny}
@@ -173,18 +187,6 @@
     \end{cardTiny}
 \end{frame}
 
-\begin{frame}{Usługi (Docker Services)}
-    \begin{card}
-        Usługi (Services) pozwalają na skalowanie kontenerów z wykorzystaniem wielu współpracujących serwerów/\textit{daemon'ów} docker'a.
-        Takie rozwiązanie nazywamy \textbf{\textit{Docker Swarm}} i składa się ono z \textit{managerów} i robotników (\textit{workers}).
-        Każdy członek roju (ang. \textit{swarm}) jest \textit{daemonem} dockera i komunikuje się z innymi członkami za pomocą API.
-    \end{card}
-\end{frame}
-
-
-\begin{frameImg}[\textwidth]{img/engine-components-flow.png}
-\end{frameImg}
-
 \section{Przykład użycia na Politechnice Łódzkiej}
 \begin{frame}{Przykład użycia na Politechnice Łódzkiej}
     \begin{cardTiny}
@@ -192,14 +194,49 @@
         Nazwa kursu: Podstawy przetwarzania dużych zbiorów danych\\
         Informatyka, FTIMS, VI Semestr
     \end{cardTiny}
+    \begin{cardTiny}
+        Podczas tego kursu pracujemy w środowisku \textit{Cloudera}. Możemy w łatwy sposób zacząć pracę na dwa sposoby:
+        \begin{itemize}
+            \item Użyć ciężkiej i zasobożernej maszyny wirtualnej
+            \item Skorzystać z dużo lżejszego obrazu docker'a
+        \end{itemize}
+    \end{cardTiny}
+\end{frame}
 
+\begin{frameImg}[1080]{img/container-vs-vm.png}
+    \vspace*{-40mm}
+    \begin{cardTiny}
+        Kontener, a maszyna wirtualna
+    \end{cardTiny}
+\end{frameImg}
+
+\begin{frame}
+    \begin{cardTiny}
+        Personalnie postanowiłem skorzystać z konteneryzacji, nie tylko ze względu na większy rozmiar maszyny wirtualnej (\textbf{9,22 GB} vs 6.34GB),
+        ale również ze względu na mniejszą zasobożerność kontenera.
+    \end{cardTiny}
+    \begin{cardTiny}
+        Z tego miejsca zachęcam do samodzielnej oceny które z rozwiązań lepiej spełnia Twoje potrzeby.
+        Aby wypróbować opcję z kontenerem wystarczy jedno polecenie:
+    \end{cardTiny}
     \begin{cardTiny}
         \colorbox{dark-gray}{\lstinline{docker run --hostname=quickstart.cloudera}}\\
         \colorbox{dark-gray}{\lstinline{--mount type=bind,source="/home/user/cloudera",target=/mnt/shared}}\\
         \colorbox{dark-gray}{\lstinline{--privileged=true -t -i -p 8888:8888 -p 7180:7180}}\\
         \colorbox{dark-gray}{\lstinline{cloudera/quickstart /usr/bin/docker-quickstart}}
-
     \end{cardTiny}
+\end{frame}
+
+\begin{frame}{Kolejny przykład}
+    \begin{cardTiny}
+        Docker pozwala niemal natychmiastowo uruchamiać całe środowiska developerskie
+    \end{cardTiny}
+
+    \begin{cardTiny}
+        % \colorbox{dark-gray}{\lstinline{docker run -it -p 127.0.0.1:8080:8080 -v \}}\\
+        % \colorbox{dark-gray}{\lstinline{"$PWD:/home/coder/project" codercom/code-server }}
+    \end{cardTiny}
+    
 \end{frame}
 
 \section{Podsumowanie}
@@ -224,6 +261,7 @@
             \item \url{https://docs.docker.com/get-started/overview/#docker-architecture}
             \item \url{https://docs.docker.com/engine/}
             \item \url{https://docs.cloudera.com/documentation/enterprise/5-14-x/topics/quickstart_docker_container.html}
+            \item \url{https://github.com/cdr/code-server}
 
         \end{itemize}
     \end{card}
